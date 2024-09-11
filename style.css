@@ -1,0 +1,964 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --bg-color: #081b29;
+    --second-bg-color: #112e42;
+    --text-color: #ededed;
+    --main-color: #00abf0;
+    --highlight-color: transparent;
+    /* Added for header background */
+}
+
+html {
+    font-size: 62.5%;
+    /* This sets 1rem to 10px */
+    overflow-x: hidden;
+    /* Prevent horizontal scrolling */
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 9%;
+    background: var(--highlight-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: background 0.3s;
+    /* Smooth background color transition */
+}
+
+.header.sticky {
+    background: var(--bg-color);
+    /* Background color when sticky */
+}
+
+
+.logo {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.navbar {
+    display: flex;
+    gap: 3.5rem;
+    /* Use gap for spacing between links */
+}
+
+.navbar a {
+    font-size: 1.7rem;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover,
+.navbar a:active {
+    color: var(--main-color);
+}
+
+.navbar a.active {
+    font-weight: bold;
+    color: var(--main-color);
+    /* Highlight the active link */
+}
+
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--text-color);
+    cursor: pointer;
+    display: none;
+}
+
+section {
+    min-height: 100vh;
+    padding: 10rem 9% 2rem;
+
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    padding: 0 9%;
+    /* Padding for horizontal spacing */
+    background: url('hacker.png') no-repeat;
+    background-size: contain;
+    /* Ensure the background image scales to fit within the container */
+    background-position: right center;
+    /* Align background image to the right side and center vertically */
+    background-attachment: fixed;
+    /* Optional: Keep background image fixed during scrolling */
+}
+
+.home-content h1 {
+
+    font-size: 5.6rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* .home-content h1 span {
+
+color: var(--text-color);
+
+} */
+
+.home-content .text-animate {
+    position: relative;
+    width: 32.8rem;
+
+}
+
+.home-content .text-animate h3 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: .7px var(--main-color);
+    background-image: linear-gradient(var(--main-color), var(--main-color));
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-position: -33rem  0;
+    animation: homeBgText 6s linear infinite;
+    animation-delay: 2s;
+}
+.home-content .text-animate h3::before{
+    content: '';
+position: absolute;
+top: 0;
+left: 0; 
+width: 0;
+height: 100%;
+border-right: 2px solid var(--main-color);
+z-index: -1;
+animation: homeCursorText 6s linear infinite;
+    animation-delay: 2s;
+
+}
+.home-content p {
+    font-size: 2rem;
+    /* Increase font size for larger text */
+    margin: 1.5rem 0 3rem;
+    /* Adjust margins as needed */
+    line-height: 1.5;
+    /* Keep line spacing for readability */
+    color: #ededed;
+    /* Optional: Text color */
+    text-align: left;
+    /* Text alignment */
+    max-width: 600px;
+    /* Restrict width for readability */
+}
+
+
+
+.btn-box {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 34.5rem;
+    height: 5rem;
+}
+
+.btn-box .btn {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 15rem;
+    height: 100%;
+    background: var(--main-color);
+    /* Default background for buttons */
+    border: 0.2rem solid var(--main-color);
+    border-radius: 8rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    color: var(--bg-color);
+    z-index: 1;
+    overflow: hidden;
+    transition: color 0.5s, transform 0.5s;
+    /* Transition for color and scaling */
+    box-sizing: border-box;
+}
+
+.btn-box .btn:hover {
+    color: var(--main-color);
+    transform: scale(1.05);
+    /* Slight zoom on hover */
+}
+
+.btn-box .btn:nth-child(2) {
+    background: transparent;
+    /* Remove the blue background */
+    color: var(--main-color);
+    /* Set text color to blue */
+    border: 0.2rem solid var(--main-color);
+    /* Maintain border color */
+}
+
+.btn-box .btn:nth-child(2):hover {
+    color: var(--bg-color);
+    /* Change text color on hover */
+}
+
+.btn-box .btn:nth-child(2)::before {
+    background: var(--main-color);
+    /* Blue background for the hover effect */
+}
+
+.btn-box .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--bg-color);
+    /* Background color of the button when not hovered */
+    z-index: -1;
+    transition: width 0.5s;
+}
+
+.btn-box .btn:hover::before {
+    width: 100%;
+    /* Fill the button background on hover */
+}
+
+.home-sci {
+    position: absolute;
+    bottom: 4rem;
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-sci a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid var(--main-color);
+    border-radius: 50%;
+    font-size: 20px;
+    color: var(--main-color);
+    text-align: center;
+    line-height: 40px;
+    /* Match line-height with height for vertical alignment */
+    transition: color 0.3s, border-color 0.3s;
+    z-index: 1;
+    overflow: hidden;
+    /* Ensure overflow is hidden to keep the background contained */
+    transition: .5s;
+}
+
+
+.home-sci a:hover {
+    color: var(--bg-color);
+
+}
+
+.home-sci a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Cover the entire button */
+    height: 100%;
+    /* Ensure it covers the full height */
+    background: var(--main-color);
+    border-radius: 50%;
+    z-index: -1;
+    /* Place it behind the button text */
+    transition: transform 0.3s;
+    /* Transition the transform property */
+    transform: scale(0);
+    /* Initially scale down to 0 */
+}
+
+.home-sci a:hover::before {
+    transform: scale(1);
+    /* Scale to full size on hover */
+}
+
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    background: var(--second-bg-color);
+    padding-bottom: 4rem;
+}
+
+.heading {
+    font-size: 5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+span {
+    color: var(--main-color);
+}
+
+.about img {
+    position: relative;
+    display: block;
+    /* Centers the image horizontally */
+    margin: 0 auto;
+    /* Centers the image */
+    width: 25rem;
+    /* Sets a specific width */
+    height: 25rem;
+    /* Sets a specific height */
+    border-radius: 50%;
+    /* Creates a circular image */
+    border: 0.2rem solid var(--main-color);
+    /* Adds a border with specified color and thickness */
+}
+
+.about-img img {
+    width: 90%;
+    /* Adjust this to fit the container */
+    border-radius: 50%;
+    /* Ensures the image is circular */
+    border: 0.2rem solid var(--main-color);
+    /* Adds a border with specified color and thickness */
+    display: block;
+    /* Centers the image horizontally */
+    margin: 0 auto;
+    /* Centers the image */
+}
+
+/* .about-img .circle-span { */
+/* position: absolute; */
+/* top: 50; */
+/* left: 50; */
+/* transform: translate(-50%, -50%) rotate(0); */
+/* width: 100; */
+/* height: 100; */
+/* border-radius: 50%; */
+/* border-top: .2rem solid var(--second-bg-color) ; */
+/* border-bottom: .2rem solid var(--second-bg-color); */
+/* border-left: .2rem solid var(--main-color); */
+/* border-right: .2rem solid var(--main-color); */
+/* } */
+
+.about-content {
+    text-align: center;
+}
+
+.about-content h3 {
+    font-size: 2.6rem
+}
+
+.about-content p {
+    font-size: 1.6rem;
+    margin: 2rem 0 3rem;
+}
+
+.btn-box.btns {
+    display: inline-block;
+    width: 15rem;
+
+
+}
+
+.btn-box.btns a::before {
+    background: var(--second-bg-color);
+}
+
+.education {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: auto;
+    padding-bottom: 5rem;
+}
+
+.education .education-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+}
+
+.education .education-column {
+    flex: 1 1 40rem;
+}
+
+.education-column .title {
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem 2rem;
+}
+
+.education-column .education-box {
+    border-left: .2rem solid var(--main-color);
+}
+
+.education-box .education-content {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.education-box .education-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -1.1rem;
+    width: 2rem;
+    height: 2rem;
+    background: var(--main-color);
+    border-radius: 50%;
+}
+
+.education-content .content {
+    position: relative;
+    padding: 1.5rem;
+    border: .2rem solid var(--main-color);
+    border-radius: .6rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    /* This hides the overflow of the ::before pseudo-element */
+}
+
+.education-content .content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    /* Start with 0 width */
+    height: 100%;
+    background: var(--second-bg-color);
+    /* z-index: -1; */
+    transition: width .5s ease;
+    /* Animate width */
+
+}
+
+.education-content .content:hover::before {
+
+    width: 100%;
+    /* On hover, the width expands to 100% */
+}
+
+.education-content .content .year {
+    font-size: 1.5rem;
+    color: var(--main-color);
+    padding-bottom: .5rem;
+}
+
+.education-content .content .year i {
+    padding-right: .5rem;
+
+}
+
+.education-content .content h3 {
+
+    font-size: 2rem;
+}
+
+.education-content .content p {
+    font-size: 1.6rem;
+    padding-top: .5rem;
+}
+
+.skills {
+    min-height: auto;
+    padding-bottom: 7rem;
+    background: var(--second-bg-color);
+}
+
+.skills .skills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+}
+
+.skills-row .skills-column {
+    flex: 1 1 40rem;
+}
+
+.skills-column .title {
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem;
+}
+
+.skills-box .skills-content {
+    position: relative;
+    border: .2rem solid var(--main-color);
+    border-radius: .6rem;
+    padding: .5rem 1.5rem;
+    z-index: 1;
+}
+
+.skills-box .skills-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--bg-color);
+    z-index: -1;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.skills-box .skills-content:hover::before {
+    width: 100%;
+}
+
+
+.skills-column .progress {
+    padding: 1rem 0;
+}
+
+.skills-column .progress h3 {
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.skills-column .progress h3 span {
+
+    color: var(--text-color);
+}
+
+.skills-column .progress .bar {
+
+    height: 2.5rem;
+    border-radius: .6rem;
+    border: .2rem solid var(--main-color);
+    padding: .5rem;
+    margin: 1rem 0;
+
+}
+
+.skills-column .progress .bar span {
+    display: block;
+    height: 100%;
+    border-radius: .3rem;
+    background: var(--main-color);
+}
+
+.contact {
+    min-height: auto;
+    padding-bottom: 7rem;
+}
+
+.contact form {
+    min-width: 70rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact form .input-box {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contact form .input-box .input-field {
+
+    position: relative;
+    width: 49%;
+    margin: .8rem 0;
+
+}
+
+.contact form .input-box .input-field input,
+.contact form .textarea-field textarea {
+
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    background: transparent;
+    border-radius: .6rem;
+    border: .2rem solid var(--main-color);
+}
+
+.contact form .input-box .input-field input::placeholder,
+.contact form .textarea-field textarea::placeholder {
+    color: var(--text-color);
+
+}
+
+/* .contact form .focus {
+
+position: absolute;
+top: 0;
+left: 0;
+width: ;
+height: 100%;
+background: red;
+border-radius: .6rem;
+z-index: -1;
+transition: .5s;
+}
+.contact form .input-box .input-field input:focus,
+.contact form .input-box .input-field input:valid {
+    width: 100%;
+} */
+
+.contact form .textarea-field {
+
+    position: relative;
+    margin: .8rem 0 2.7rem;
+    display: flex;
+}
+
+.contact form .textarea-field textarea {
+
+    resize: none;
+}
+
+.contact form .btn-box .btn {
+
+    cursor: pointer;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem 9%;
+    background: var(--second-bg-color);
+    /* Apply the variable */
+}
+
+.footer-text {
+    flex: 1;
+    margin-right: 1rem;
+    /* Add margin to create space between text and icon */
+}
+
+.footer-iconTop {
+    flex: 0 0 auto;
+    /* Prevent shrinking or growing of this item */
+}
+
+.footer-iconTop a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8rem;
+    background: var(--main-color);
+    border: .2rem solid var(--main-color);
+    border-radius: .6rem;
+    z-index: 1;
+    overflow: hidden;
+    text-decoration: none;
+    /* Remove underline */
+}
+
+.footer-iconTop a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--second-bg-color);
+    z-index: -1;
+    transition: width .5s;
+}
+
+.footer-iconTop a:hover::before {
+    width: 100%;
+}
+
+.footer-iconTop a i {
+    font-size: 2.4rem;
+    color: var(--second-bg-color);
+    transition: color .5s;
+}
+
+.footer-iconTop a:hover i {
+    color: var(--main-color);
+}
+
+.animate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: yellowgreen;
+    z-index: 98;
+}
+
+@media (max-width: 1200px) {
+
+    html {
+
+        font-size: 55%;
+    }
+}
+
+
+@media (max-width: 991px) {
+    .header {
+
+        padding: 2rem 4%;
+    }
+
+    section {
+
+        padding: 10rem 4% 2rem;
+    }
+
+    .home {
+        padding: 0 4%;
+    }
+
+    .footer {
+        padding: 2rem 4%;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .header {
+
+        background: var(--bg-color);
+    }
+
+    #menu-icon {
+        display: block;
+
+    }
+
+}
+
+/* Styles for the navbar */
+/* Styles for the navbar */
+.navbar {
+    position: absolute;
+    top: 100%;
+    /* Position just below the header */
+    left: -100%;
+    /* Initially hide the navbar */
+    width: 100%;
+    padding: 1rem 4%;
+    background: var(--main-color, #fff);
+    /* Default to #fff if var is not defined */
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+    z-index: 1;
+    transition: left 0.25s ease;
+    /* Smooth transition effect */
+}
+
+/* Navbar active state (visible) */
+/* Navbar styles */
+.navbar {
+    position: absolute;
+    top: 100%;
+    /* Position just below the header */
+    left: -100%;
+    /* Initially hide the navbar */
+    width: 100%;
+    padding: 1rem 4%;
+    background: var(--main-color, #fff);
+    /* Default to #fff if var is not defined */
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+    z-index: 1;
+    transition: left 0.25s ease;
+    /* Smooth transition effect */
+}
+
+/* Navbar active state (visible) */
+.navbar.active {
+    left: 0;
+    /* Show the navbar */
+    transition-delay: 0s;
+    /* No delay when showing */
+}
+
+/* Active navigation indicator */
+.navbar .active-nav {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    /* Initially hide the active-nav */
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color, yellowgreen);
+    /* Default to yellowgreen if var is not defined */
+    border-top: .1rem solid rgba(0, 0, 0, .2);
+    z-index: -1;
+    /* Place behind other content */
+    transition: left 0.25s ease;
+    /* Smooth transition effect */
+    transition-delay: 0s;
+    /* No delay initially */
+}
+
+/* When the navbar is active, slide in the active-nav */
+.navbar.active .active-nav {
+    left: 0;
+    /* Show the active-nav */
+    transition-delay: 0.25s;
+    /* Delay transition when showing */
+}
+
+/* Navbar links styling */
+.navbar a {
+    display: block;
+    font-size: 2rem;
+    /* Maintain font size */
+    margin: 3rem 0;
+    color: var(--text-color, #333);
+    /* Use main text color, default to #333 */
+    text-decoration: none;
+    /* Remove underline */
+    transform: translateX(-20rem);
+    /* Move links off-screen initially */
+    transition: transform 0.25s ease;
+    /* Smooth transition for transform */
+    transition-delay: 0s;
+    /* No delay initially */
+}
+
+/* Active link styling */
+.navbar.active a {
+    transform: translateX(0);
+    /* Move links into view */
+    transition-delay: 0.25s;
+    /* Delay transition when showing */
+
+}
+
+.home-imgHover {
+
+    pointer-events: none;
+    background: var(--bg-color);
+    opacity: .6;
+}
+
+@media (max-width: 520px) {
+
+    html {
+        font-size: 50%;
+
+    }
+
+    .home-content h1 {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .home-sci {
+
+        width: 160px;
+
+    }
+
+    .home-sci a {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+@media (max-width: 462px) {
+    .home-content h1 {
+        font-size: 5.2rem;
+
+
+    }
+
+    .education {
+
+        padding: 10rem 4% 5rem 5%;
+    }
+
+    .contact form .input-box .input-field {
+        width: 100%;
+    }
+
+    .footer {
+        flex-direction: column-reverse;
+    }
+
+    .footer p {
+
+        margin-top: 2rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 371px) {
+    .home {
+        justify-content: center;
+    }
+
+    .home-content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+.home-content h1 {
+    font-size: 5rem;
+}
+}
+
+@keyframes homeBgText {
+0%, 10%, 100% {
+
+    background-position: -33rem 0;
+
+}
+65%, 85%  {
+
+    background-position: 0 0;
+    
+}
+}
+
+@keyframes homeCursorText {
+    0%, 10%, 100% {
+    
+       width: 0;
+    
+    }
+    65%,78%, 85%  {
+    
+       width: 100%;
+       opacity: 1;
+        
+    }
+    75%, 81% {
+        opacity: 0;
+    }
+    }
+
+    
